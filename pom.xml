@@ -7,13 +7,14 @@
     <groupId>io.muzoo.ooc.webapp</groupId>
     <artifactId>ooc-webapp</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <name>Webapp</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tomcat.version>8.5.2</tomcat.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -67,4 +68,34 @@
             <version>8.0.16</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>ooc.webapp</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>Webapp</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>package</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+            </plugin>
+        </plugins>
+    </build>
 </project>
